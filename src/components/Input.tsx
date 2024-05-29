@@ -18,16 +18,14 @@ export const Input: React.FC = () => {
 
   const onChange = useCallback(
     (value: string) => {
-      setValue(value);
+      if (!isNaN(Number(value))) {
+        setValue(value);
+      }
     },
     [value],
   );
 
   const getFizzBuzz = (value: string): string => {
-    if (!value || isNaN(Number(value))) {
-      return value;
-    }
-
     const numberValue = Number(value);
 
     if (numberValue % 3 === 0 && numberValue % 5 === 0) {
